@@ -1,18 +1,17 @@
 package Book;
 
-import java.util.Date;
-
-import State.Etat;
-
 public class Fable extends Livre {
+    private String morale;
 
-	public Fable(String livreID, String nomAuteur, Date datePublication, String maisonEdit, Date dateAjout,
-			Etat etatLivre) {
-		super(livreID, nomAuteur, datePublication, maisonEdit, dateAjout, etatLivre);
-	
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
+    public Fable(String livreID, String nomAuteur, String isbn, String categorie, String morale) {
+        super(livreID, nomAuteur, isbn, categorie);
+        this.morale = morale;
+    }
+
+    public String getMorale() { return morale; }
+
+    @Override
+    public void afficherInfos() {
+        System.out.println("Fable - ID: " + getLivreID() + ", Auteur: " + getNomAuteur() + ", ISBN: " + getIsbn() + ", Catégorie: " + getCategorie() + ", Morale: " + morale);
+    }
 }

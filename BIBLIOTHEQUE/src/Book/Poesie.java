@@ -1,16 +1,16 @@
 package Book;
-
-import java.util.Date;
-
-import State.Etat;
-
 public class Poesie extends Livre {
-	private String Style;
+    private String theme;
 
-	public Poesie(String livreID, String nomAuteur, Date datePublication, String maisonEdit, Date dateAjout,
-			Etat etatLivre,String Style) {
-		super(livreID, nomAuteur, datePublication, maisonEdit, dateAjout, etatLivre);
-		// TODO Auto-generated constructor stub
-	}
+    public Poesie(String livreID, String nomAuteur, String isbn, String categorie, String theme) {
+        super(livreID, nomAuteur, isbn, categorie);
+        this.theme = theme;
+    }
 
+    public String getTheme() { return theme; }
+
+    @Override
+    public void afficherInfos() {
+        System.out.println("Poésie - ID: " + getLivreID() + ", Auteur: " + getNomAuteur() + ", ISBN: " + getIsbn() + ", Catégorie: " + getCategorie() + ", Thème: " + theme);
+    }
 }

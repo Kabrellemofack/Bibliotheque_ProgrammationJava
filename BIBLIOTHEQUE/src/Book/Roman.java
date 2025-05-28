@@ -1,18 +1,19 @@
+
+
 package Book;
 
-import java.util.Date;
-
-import State.Etat;
-
 public class Roman extends Livre {
-	
-	private String Genre ;
-	
-	public Roman(String livreID, String nomAuteur, Date datePublication, String maisonEdit, Date dateAjout,
-			Etat etatLivre,String Genre) {
-		super(livreID, nomAuteur, datePublication, maisonEdit, dateAjout, etatLivre);
-		// TODO Auto-generated constructor stub
-		this.Genre= Genre;
-	}
+    private String genre;
 
+    public Roman(String livreID, String nomAuteur, String isbn, String categorie, String genre) {
+        super(livreID, nomAuteur, isbn, categorie);
+        this.genre = genre;
+    }
+
+    public String getGenre() { return genre; }
+
+    @Override
+    public void afficherInfos() {
+        System.out.println("Roman - ID: " + getLivreID() + ", Auteur: " + getNomAuteur() + ", ISBN: " + getIsbn() + ", Catégorie: " + getCategorie() + ", Genre: " + genre);
+    }
 }

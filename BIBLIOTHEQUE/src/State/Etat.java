@@ -7,4 +7,5 @@ public interface Etat{
 	void reparation(Livre Livre);
 	void emprunter(Livre Livre);
 	void rendre(Livre Livre);
+	
 }

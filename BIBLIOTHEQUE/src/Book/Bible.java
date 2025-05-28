@@ -1,16 +1,18 @@
 package Book;
 
-import java.util.Date;
+public class Bible extends Livre {
+    private String testament;
 
-import State.Etat;
+    public Bible(String livreID, String nomAuteur, String isbn, String categorie, String testament) {
+        super(livreID, nomAuteur, isbn, categorie);
+        this.testament = testament;
+    }
 
-public class  Bible extends Livre{
-	private String Religion;
+    public String getTestament() { return testament; }
 
-	public Bible(String livreID, String nomAuteur, Date datePublication, String maisonEdit, Date dateAjout,
-			Etat etatLivre,String Religion) {
-		super(livreID, nomAuteur, datePublication, maisonEdit, dateAjout, etatLivre);
-		// TODO Auto-generated constructor stub
-	}	
-	
+    @Override
+    public void afficherInfos() {
+        System.out.println("Bible - ID: " + getLivreID() + ", Auteur: " + getNomAuteur() + ", ISBN: " + getIsbn() + ", Catégorie: " + getCategorie() + ", Testament: " + testament);
+    }
 }
+
