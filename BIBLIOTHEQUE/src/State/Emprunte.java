@@ -23,12 +23,7 @@ public class Emprunte implements Etat{
 	}
 
 	
-	@Override
-	public void rendre(Livre Livre) {
-		// TODO Auto-generated method stub
-		Livre.setEtatLivre(new Rendre());
-		
-	}
+	
 
 
 }
