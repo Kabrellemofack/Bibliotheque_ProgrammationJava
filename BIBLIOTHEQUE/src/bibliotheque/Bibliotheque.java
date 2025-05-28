@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import Book.Livre;
-import ADHERENT.Adherent;
+import Observer.Adherent;
 import EMPRUNT.Emprunt;
 import Strategy.AmendStrategy;
 import reservation.Reservation;
@@ -34,29 +34,40 @@ public class Bibliotheque {
 	public Map<String, Livre> getLivres() {
 		return livres;
 	}
+	
 	public void setLivres(Map<String, Livre> livres) {
 		this.livres = livres;
 	}
+	
 	public Map<Integer, Adherent> getAdherents() {
 		return adherents;
 	}
+	
 	public void setAdherents(Map<Integer, Adherent> adherents) {
 		this.adherents = adherents;
 	}
+	
 	public List<Emprunt> getEmprunts() {
 		return emprunts;
 	}
+	
 	public void setEmprunts(List<Emprunt> emprunts) {
 		this.emprunts = emprunts;
 	}
+	
 	public List<Reservation> getReservations() {
 		return reservations;
 	}
+	
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
 	}
+
+   public void AfficherTousLesLivres() {
 	
-  public void AfficherTousLesLivres() {
-	
-}
+   }
+   public void SupprimerLivre() {
+	   
+   }
+   
 }

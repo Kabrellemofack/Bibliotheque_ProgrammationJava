@@ -22,6 +22,12 @@ public class Emprunte implements Etat{
 		System.out.println("Impossible, le livre ne peut être reparé !!!");
 	}
 
+	@Override
+	public void rendre(Livre Livre) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 
