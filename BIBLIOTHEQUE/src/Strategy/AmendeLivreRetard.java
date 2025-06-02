@@ -1,15 +1,22 @@
 package Strategy;
 
-import java.time.LocalDate;
-
 import EMPRUNT.Emprunt;
 
 public class AmendeLivreRetard implements AmendStrategy {
 
 	@Override
-	public double CalculerAmende(Emprunt emprunt, LocalDate dateRetourEffective) {
+	public double CalculerAmende(Emprunt emprunt) {
+		// TODO Auto-generated method stub
+		int amende = 150;
+		if (emprunt.getDateRetourReelle().after(emprunt.getDateRetourPrevue())) {
+			System.out.println("Vous avez un retard donc vous devez payer une amende de" + amende + "€\n");
+			return amende;
+		} else {
+			System.out.println("Vous êtes dans les temps\n");
+			return 0;
+		}
 		
-		return 0;
 	}
+
 
 }

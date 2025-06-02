@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class RechercherAuteur implements RechercheStrategy {
-	
+public class RechercherByTitle implements RechercheStrategy{
+
 	@Override
 	public void rechercher(String file, String recherche) {
 		// TODO Auto-generated method stub
@@ -22,4 +22,5 @@ public class RechercherAuteur implements RechercheStrategy {
 		    System.out.println("Erreur de lecture du fichier");
 		}
 	}
+
 }

@@ -8,7 +8,7 @@ public abstract class Livre {
     private String LivreID;
     private String NomAuteur;
     private Date DatePublication;
-    public String MaisonEdit;
+    private String MaisonEdit;
     private Date DateAjout;
     private Etat EtatLivre; 
 

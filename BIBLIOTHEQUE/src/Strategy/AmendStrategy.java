@@ -1,11 +1,10 @@
 package Strategy;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import EMPRUNT.Emprunt;
 
 public interface AmendStrategy {
 	
-	public  double CalculerAmende (Emprunt emprunt,LocalDate dateRetourEffective);
-
+	public  double CalculerAmende (Emprunt emprunt);
 }

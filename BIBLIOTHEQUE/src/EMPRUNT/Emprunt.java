@@ -4,42 +4,54 @@ import java.sql.Date;
 import java.util.List;
 
 import Observer.Adherent;
+import State.Etat;
+import Book.Livre;
 
 public class Emprunt {
-	private List<Adherent>  adherent;
-	private Date dateEmprunt;
+	private Adherent  adherent;
+	private Livre Livre;
 	private Date dateRetourPrevue;
-	private Date dateRetiurRelle;
-	public Emprunt(Adherent adherent, Date dateEmprunt, Date dateRetourPrevue, Date dateRetiurRelle) {
+	private Date dateRetourReelle;
+	
+	public Emprunt(Adherent adherent, Date dateRetourPrevue, Date dateRetiurRelle) {
 		super();
 		this.adherent = adherent;
-		this.dateEmprunt = dateEmprunt;
 		this.dateRetourPrevue = dateRetourPrevue;
-		this.dateRetiurRelle = dateRetiurRelle;
+		this.dateRetourReelle = dateRetiurRelle;
 	}
+	
 	public Adherent getAdherent() {
 		return adherent;
 	}
 	public void setAdherent(Adherent adherent) {
 		this.adherent = adherent;
 	}
-	public Date getDateEmprunt() {
-		return dateEmprunt;
+	
+	
+	public Livre getLivre() {
+		return Livre;
 	}
-	public void setDateEmprunt(Date dateEmprunt) {
-		this.dateEmprunt = dateEmprunt;
+
+	public void setLivre(Livre livre) {
+		Livre = livre;
 	}
+
+	public void setDateRetourReelle(Date dateRetourReelle) {
+		this.dateRetourReelle = dateRetourReelle;
+	}
+
 	public Date getDateRetourPrevue() {
 		return dateRetourPrevue;
 	}
 	public void setDateRetourPrevue(Date dateRetourPrevue) {
 		this.dateRetourPrevue = dateRetourPrevue;
 	}
-	public Date getDateRetiurRelle() {
-		return dateRetiurRelle;
+	
+	public Date getDateRetourReelle() {
+		return dateRetourReelle;
 	}
-	public void setDateRetiurRelle(Date dateRetiurRelle) {
-		this.dateRetiurRelle = dateRetiurRelle;
+	public void setDateRetourRelle(Date dateRetiurRelle) {
+		this.dateRetourReelle = dateRetiurRelle;
 	}
 
 

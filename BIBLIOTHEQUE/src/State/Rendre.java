@@ -7,7 +7,7 @@ public class Rendre implements Etat{
 	@Override
 	public void rendre(Livre Livre) {
 		// TODO Auto-generated method stub
-		System.out.println("le livre a été rendu !!!\n");
+		System.out.println("le livre est disponible !!!\n");
 		
 	}
 
