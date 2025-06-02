@@ -10,7 +10,7 @@ public class AmendLivreEndommage implements AmendStrategy{
 		// TODO Auto-generated method stub
 		Livre livre =  emprunt.getLivre();
 		/**
-		 * Bientôt disponible
+		 * Bientôt disponible 
 		 */
 		return 0;
 	}
