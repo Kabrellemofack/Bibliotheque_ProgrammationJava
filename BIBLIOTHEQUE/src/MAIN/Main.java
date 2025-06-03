@@ -20,7 +20,6 @@ public class Main {
     private static final String LIVRES = "livres.txt";
     private static final String ADHERENTS = "adherents.txt";
     private static final Map<String, String> UTILISATEURS_ENREGISTRES = new HashMap<>();
-
     static {
         UTILISATEURS_ENREGISTRES.put("admin", "admin");
         UTILISATEURS_ENREGISTRES.put("user", "user");

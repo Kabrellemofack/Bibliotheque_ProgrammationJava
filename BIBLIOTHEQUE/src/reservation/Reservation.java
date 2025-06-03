@@ -31,7 +31,7 @@ public class Reservation {
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return "Réservation [Adhérent: " + adherent.getNomadh() + " " + adherent.getPrenom() +
+        return "Réservation [Adhérent: " + adherent.getNomAdh() + " " + adherent.getPrenom() +
                ", Livre: " + livre.getTitre() + " (ID: " + livre.getLivreID() + ")" +
                ", Réservé le: " + sdf.format(dateReservation) +
                ", Active: " + (active ? "Oui" : "Non") + "]";

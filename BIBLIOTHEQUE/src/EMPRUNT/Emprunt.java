@@ -2,7 +2,6 @@ package EMPRUNT;
 
 import Observer.Adherent;
 import Book.Livre;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,44 +12,64 @@ public class Emprunt {
     private Date dateRetourPrevu;
     private Date dateRetourReel;
 
+    // Constructeur principal avec tous les champs sauf retour réel
     public Emprunt(Adherent adherent, Livre livre, Date dateEmprunt, Date dateRetourPrevu) {
         this.adherent = adherent;
         this.livre = livre;
         this.dateEmprunt = dateEmprunt;
         this.dateRetourPrevu = dateRetourPrevu;
-        this.dateRetourReel = null; // Non retourné initialement
+        this.dateRetourReel = null;
     }
 
- 
+    // Getters et Setters
     public Adherent getAdherent() {
-    	return adherent; 
-    	}
-    public Livre getLivre() {
-    	return livre;
-    	}
-    public Date getDateEmprunt() {
-    	return dateEmprunt; 
-    	}
-    public Date getDateRetourPrevu() {
-    	
-    	return dateRetourPrevu;
-    	}
-    public Date getDateRetourReel() {
-    	return dateRetourReel;
-    	}
+        return adherent;
+    }
 
-    public void setDateRetourReel(Date dateRetourReel) { 
-    	this.dateRetourReel = dateRetourReel; 
-    	}
+    public void setAdherent(Adherent adherent) {
+        this.adherent = adherent;
+    }
+
+    public Livre getLivre() {
+        return livre;
+    }
+
+    public void setLivre(Livre livre) {
+        this.livre = livre;
+    }
+
+    public Date getDateEmprunt() {
+        return dateEmprunt;
+    }
+
+    public void setDateEmprunt(Date dateEmprunt) {
+        this.dateEmprunt = dateEmprunt;
+    }
+
+    public Date getDateRetourPrevu() {
+        return dateRetourPrevu;
+    }
+
+    public void setDateRetourPrevu(Date dateRetourPrevu) {
+        this.dateRetourPrevu = dateRetourPrevu;
+    }
+
+    public Date getDateRetourReel() {
+        return dateRetourReel;
+    }
+
+    public void setDateRetourReel(Date dateRetourReel) {
+        this.dateRetourReel = dateRetourReel;
+    }
 
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String retourReel = (dateRetourReel != null) ? sdf.format(dateRetourReel) : "Non retourné";
+        String retourReelStr = (dateRetourReel != null) ? sdf.format(dateRetourReel) : "Non retourné";
         return "Emprunt [Adhérent: " + adherent.getNom() + " " + adherent.getPrenom() +
-               ", Livre: " + livre.getTitre() + " (ID: " + livre.getLivreID() + ")" +
-               ", Emprunté le: " + sdf.format(dateEmprunt) +
-               ", Retour prévu: " + sdf.format(dateRetourPrevu) +
-               ", Retour réel: " + retourReel + "]";
+                ", Livre: " + livre.getTitre() + " (ID: " + livre.getLivreID() + ")" +
+                ", Emprunté le: " + sdf.format(dateEmprunt) +
+                ", Retour prévu: " + sdf.format(dateRetourPrevu) +
+                ", Retour réel: " + retourReelStr + "]";
     }
 }

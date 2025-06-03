@@ -1,10 +1,8 @@
 package State;
 
-import Book.Livre; // Importation de la classe Livre
+import Book.Livre;
 
-/**
- * État EnReparation: Le livre est en cours de réparation et n'est pas disponible.
- */
+ //en reparation le livre n'est pas dispo
 public class Reparation implements Etat {
     @Override
     public void Emprunte(Livre livre) {
@@ -16,16 +14,20 @@ public class Reparation implements Etat {
         System.out.println("Impossible de réserver le livre '" + livre.getTitre() + "', il est en réparation.");
     }
 
+
     @Override
     public void Reparation(Livre livre) {
         System.out.println("Le livre '" + livre.getTitre() + "' est déjà en réparation.");
     }
 
+
+
+
     @Override
     public void Disponible(Livre livre) {
-        livre.setEtatLivre(new Disponible()); // Le livre est réparé et redevient Disponible
+        livre.setEtatLivre(new Disponible()); 
         System.out.println("Le livre '" + livre.getTitre() + "' a été réparé et est maintenant disponible.");
-        // Si le livre était réservé avant la réparation, il faudrait notifier l'adhérent.
+        
     }
 
     @Override

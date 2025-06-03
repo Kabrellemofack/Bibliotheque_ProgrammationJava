@@ -14,7 +14,7 @@ public class Bible extends Livre {
 
     @Override
     public void afficherInfos() {
-        // Appelle la méthode utilitaire de la classe parente pour imprimer les informations de la Bible
+       
         printBaseInfo("Bible", "Testament", testament);
     }
 }

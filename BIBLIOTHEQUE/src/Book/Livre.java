@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public abstract class Livre {
+
     private String livreID;
     private String titre;
     private String nomAuteur;
@@ -51,16 +52,16 @@ public abstract class Livre {
     // Méthode utilitaire pour créer une chaîne de base formatée pour l'affichage console
     protected void printBaseInfo(String type, String specificiteLabel, String specificiteValue) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println("╔═══════════════════════════════════════════════════════════╗");
-        System.out.println("║ Type       : " + String.format("%-45s", type) + "║");
-        System.out.println("║ ID         : " + String.format("%-45s", getLivreID()) + "║");
-        System.out.println("║ Titre      : " + String.format("%-45s", getTitre()) + "║");
-        System.out.println("║ Auteur     : " + String.format("%-45s", getNomAuteur()) + "║");
-        System.out.println("║ Publication: " + String.format("%-45s", sdf.format(getDatePublication())) + "║");
-        System.out.println("║ Éditeur    : " + String.format("%-45s", getMaisonEdit()) + "║");
-        System.out.println("║ Ajout      : " + String.format("%-45s", sdf.format(getDateAjout())) + "║");
-        System.out.println("║ " + String.format("%-10s", specificiteLabel) + ": " + String.format("%-45s", specificiteValue) + "║");
-        System.out.println("║ État       : " + String.format("%-45s", getEtatLivre().getNom()) + "║");
-        System.out.println("╚═══════════════════════════════════════════════════════════╝");
+        System.out.println("#-----------------------------------------------------------#");
+        System.out.println("# Type       : " + String.format("%-45s", type) +                           "#");
+        System.out.println("# ID         : " + String.format("%-45s", getLivreID()) +                   "#");
+        System.out.println("# Titre      : " + String.format("%-45s", getTitre()) +                     "#");
+        System.out.println("# Auteur     : " + String.format("%-45s", getNomAuteur()) +                 "#");
+        System.out.println("# Publie     : " + String.format("%-45s",sdf.format(getDatePublication()))+      "#");
+        System.out.println("# Éditeur    : " + String.format("%-45s", getMaisonEdit()) +                "#");
+        System.out.println("# Ajout      : " + String.format("%-45s",sdf.format(getDateAjout()))+       "#");
+        System.out.println("# Testament  : " + String.format("%-10s", specificiteLabel) +               "#");
+        System.out.println("# État       : " + String.format("%-45s", getEtatLivre().getNom()) +        "#");
+        System.out.println("#-----------------------------------------------------------#");
     }
 }
