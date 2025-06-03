@@ -2,10 +2,11 @@ package State;
 
 import Book.Livre;
 
-public interface Etat{
-	void reservation(Livre Livre);
-	void reparation(Livre Livre);
-	void emprunter(Livre Livre);
-	void rendre(Livre Livre);
-	
+public interface Etat {
+    void Emprunte(Livre livre);     
+    void Reservation(Livre livre); 
+    void Reparation(Livre livre);   
+    void Disponible(Livre livre);  
+
+    String getNom(); 
 }

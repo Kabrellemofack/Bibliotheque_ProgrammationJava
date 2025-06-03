@@ -1,10 +1,12 @@
 package Book;
 
+import java.util.Date;
+
 public class Fable extends Livre {
     private String morale;
 
-    public Fable(String livreID, String nomAuteur, String isbn, String categorie, String morale) {
-        super(livreID, nomAuteur, isbn, categorie);
+    public Fable(String livreID, String titre, String nomAuteur, Date datePublication, String maisonEdit, Date dateAjout, String morale) {
+        super(livreID, titre, nomAuteur, datePublication, maisonEdit, dateAjout);
         this.morale = morale;
     }
 
@@ -12,6 +14,7 @@ public class Fable extends Livre {
 
     @Override
     public void afficherInfos() {
-        System.out.println("Fable - ID: " + getLivreID() + ", Auteur: " + getNomAuteur() + ", ISBN: " + getIsbn() + ", Catégorie: " + getCategorie() + ", Morale: " + morale);
+        // Appelle la méthode utilitaire de la classe parente pour imprimer les informations de la fable
+        printBaseInfo("Fable", "Morale", morale);
     }
 }

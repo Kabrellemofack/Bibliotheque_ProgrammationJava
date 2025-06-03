@@ -1,16 +1,20 @@
 package Book;
+
+import java.util.Date;
+
 public class Poesie extends Livre {
     private String theme;
 
-    public Poesie(String livreID, String nomAuteur, String isbn, String categorie, String theme) {
-        super(livreID, nomAuteur, isbn, categorie);
+    public Poesie(String livreID, String titre, String nomAuteur, Date datePublication, String maisonEdit, Date dateAjout, String testament) {
+        super(livreID, titre, nomAuteur, datePublication, maisonEdit, dateAjout);
         this.theme = theme;
     }
 
-    public String getTheme() { return theme; }
+    public String getTestament() { return theme; }
 
     @Override
     public void afficherInfos() {
-        System.out.println("Poésie - ID: " + getLivreID() + ", Auteur: " + getNomAuteur() + ", ISBN: " + getIsbn() + ", Catégorie: " + getCategorie() + ", Thème: " + theme);
+        // Appelle la méthode utilitaire de la classe parente pour imprimer les informations de la Bible
+        printBaseInfo("Poesie", "Theme", theme);
     }
 }

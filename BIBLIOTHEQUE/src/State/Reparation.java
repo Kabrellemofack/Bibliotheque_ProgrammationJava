@@ -1,33 +1,35 @@
 package State;
 
-import Book.Livre;
+import Book.Livre; // Importation de la classe Livre
 
-public class Reparation implements Etat{
+/**
+ * État EnReparation: Le livre est en cours de réparation et n'est pas disponible.
+ */
+public class Reparation implements Etat {
+    @Override
+    public void Emprunte(Livre livre) {
+        System.out.println("Impossible d'emprunter le livre '" + livre.getTitre() + "', il est en réparation.");
+    }
 
-	@Override
-	public void reservation(Livre Livre) {
-		// TODO Auto-generated method stub
-		Livre.setEtatLivre(new Reservation());
-		
-	}
+    @Override
+    public void Reservation(Livre livre) {
+        System.out.println("Impossible de réserver le livre '" + livre.getTitre() + "', il est en réparation.");
+    }
 
-	@Override
-	public void reparation(Livre Livre) {
-		// TODO Auto-generated method stub
-		System.out.println("Le livre est en reparation !!!\n");
-	}
+    @Override
+    public void Reparation(Livre livre) {
+        System.out.println("Le livre '" + livre.getTitre() + "' est déjà en réparation.");
+    }
 
-	@Override
-	public void emprunter(Livre Livre) {
-		// TODO Auto-generated method stub
-		System.out.println("Impossible, le livre ne peut pas être emprunté !!!\n");
-	}
+    @Override
+    public void Disponible(Livre livre) {
+        livre.setEtatLivre(new Disponible()); // Le livre est réparé et redevient Disponible
+        System.out.println("Le livre '" + livre.getTitre() + "' a été réparé et est maintenant disponible.");
+        // Si le livre était réservé avant la réparation, il faudrait notifier l'adhérent.
+    }
 
-	@Override
-	public void rendre(Livre Livre) {
-		// TODO Auto-generated method stub
-		System.out.println("Impossible, Le livre ne peut pas être rendu !!!\n");
-	}
-
-
+    @Override
+    public String getNom() {
+        return "En réparation";
+    }
 }

@@ -1,12 +1,12 @@
-
-
 package Book;
+
+import java.util.Date;
 
 public class Roman extends Livre {
     private String genre;
 
-    public Roman(String livreID, String nomAuteur, String isbn, String categorie, String genre) {
-        super(livreID, nomAuteur, isbn, categorie);
+    public Roman(String livreID, String titre, String nomAuteur, Date datePublication, String maisonEdit, Date dateAjout, String genre) {
+        super(livreID, titre, nomAuteur, datePublication, maisonEdit, dateAjout);
         this.genre = genre;
     }
 
@@ -14,6 +14,7 @@ public class Roman extends Livre {
 
     @Override
     public void afficherInfos() {
-        System.out.println("Roman - ID: " + getLivreID() + ", Auteur: " + getNomAuteur() + ", ISBN: " + getIsbn() + ", Catégorie: " + getCategorie() + ", Genre: " + genre);
+        // Appelle la méthode utilitaire de la classe parente pour imprimer les informations du roman
+        printBaseInfo("Roman", "Genre", genre);
     }
 }

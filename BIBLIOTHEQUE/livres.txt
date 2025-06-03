@@ -1,0 +1,14 @@
+P005;Les Voix du Silence;Emilie Dubois;1995-04-22;Editions Poesia;2025-05-19;Les Voix du Silence
+P004;Échos du Passé;Antoine Dupuis;2002-10-18;Editions Poesia;2025-05-12;Échos du Passé
+P006;Nuit d'Étoiles;François Lemoine;2003-09-09;Editions Poesia;2025-05-20;Nuit d'Étoiles
+P001;Chants du Vent;Paul Verlaine;1870-06-20;Editions Poesia;2025-05-03;Chants du Vent
+P003;Rêves Éveillés;Claire Denis;1998-12-05;Editions Poesia;2025-05-11;Rêves Éveillés
+P002;Mélodies tristes;Victor Hugo;1856-11-10;Editions Poesia;2025-05-04;Mélodies tristes
+F001;La Cigale et la Fourmi;Jean de La Fontaine;1668-01-01;Classiques;2025-05-07;Travail et Préparation
+F002;Le Corbeau et le Renard;Jean de La Fontaine;1668-01-01;Classiques;2025-05-08;Flatterie
+B004;L'Apocalypse;Auteur Inconnu;0100-01-01;Religions Press;2025-05-14;Nouveau Testament
+F003;Le Lièvre et la Tortue;Jean de La Fontaine;1668-01-01;Classiques;2025-05-15;Persévérance
+B002;La Bible Nouveau Testament;Auteur Inconnu;0050-01-01;Religions Press;2025-05-06;Nouveau Testament
+F004;Le Loup et l'Agneau;Jean de La Fontaine;1668-01-01;Classiques;2025-05-16;Injustice
+B003;La Genèse;Auteur Inconnu;1500-01-01;Religions Press;2025-05-13;Ancien Testament
+B001;La Bible Ancien Testament;Auteur Inconnu;1000-01-01;Religions Press;2025-05-05;Ancien Testament

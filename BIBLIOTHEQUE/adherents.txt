@@ -1,0 +1,5 @@
+01;kabrel;lemka
+1;kabso;kabso
+03;kiklobe;kiki
+989;kiko;lionnel
+6789;dedede;folklore

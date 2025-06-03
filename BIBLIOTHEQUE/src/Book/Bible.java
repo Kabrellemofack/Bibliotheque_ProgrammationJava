@@ -1,10 +1,12 @@
 package Book;
 
+import java.util.Date;
+
 public class Bible extends Livre {
-	
     private String testament;
-    public Bible(String livreID, String nomAuteur, String isbn, String categorie, String testament) {
-        super(livreID, nomAuteur, isbn, categorie);
+
+    public Bible(String livreID, String titre, String nomAuteur, Date datePublication, String maisonEdit, Date dateAjout, String testament) {
+        super(livreID, titre, nomAuteur, datePublication, maisonEdit, dateAjout);
         this.testament = testament;
     }
 
@@ -12,7 +14,7 @@ public class Bible extends Livre {
 
     @Override
     public void afficherInfos() {
-        System.out.println("Bible - ID: " + getLivreID() + ", Auteur: " + getNomAuteur() + ", ISBN: " + getIsbn() + ", Catégorie: " + getCategorie() + ", Testament: " + testament);
+        // Appelle la méthode utilitaire de la classe parente pour imprimer les informations de la Bible
+        printBaseInfo("Bible", "Testament", testament);
     }
 }
-
