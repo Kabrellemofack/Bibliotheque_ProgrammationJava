@@ -325,9 +325,11 @@ public class Bibliotheque {
         }
     }
     
+    // methode de sauvgarde des documents pas encore au point dans le main 
     public static void sauvegarderEmprunts(String nomFichier) {
         try (FileWriter fw = new FileWriter(nomFichier)) {
-            for (Emprunt emprunt : emprunts) {
+            Emprunt[] emprunts = null;
+			for (Emprunt emprunt : emprunts) {
                 String idAdherent = emprunt.getAdherent().getAdherentID();
                 String idLivre = emprunt.getLivre().getLivreID();
                 String dateEmprunt = SDF.format(emprunt.getDateEmprunt());
