@@ -3,7 +3,10 @@ package Observer;
 import Book.Livre;
 import EMPRUNT.Emprunt;
 import State.Etat;
+import State.Reparation;
+import reservation.Reservation;
 import State.Disponible;
+import State.Emprunte;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -83,11 +86,25 @@ public class Adherent implements Observer {
             Date dateRetourPrevu = calculerDateRetourPrevu(livre, dateEmprunt);
             Emprunt nouvelEmprunt = new Emprunt(this, livre, dateEmprunt, dateRetourPrevu);
             this.empruntsEnCours.add(nouvelEmprunt);
-            livre.getEtatLivre().Emprunte(livre); // Déléguer le changement d'état
+            livre.getEtatLivre().Emprunte(livre); 
             System.out.println("Emprunté. Retour prévu le : " + nouvelEmprunt.getDateRetourPrevu());
-        } else {
-            System.out.println("Le livre '" + livre.getTitre() + "' n'est pas disponible pour l'emprunt. Etat : " + livre.getEtatLivre().getNom());
-        }
+        } else 
+        
+        	if(livre.getEtatLivre() instanceof Emprunte){
+            System.out.println("\nLe livre '" + livre.getTitre() + "'Etat: " + livre.getEtatLivre().getNom());
+        }else 
+        	if(livre.getEtatLivre() instanceof Reservation) {
+        		
+        		System.out.println("\nLe livre '" + livre.getTitre() + "'Etat: " + livre.getEtatLivre().getNom());	
+        	}else 
+        		if(livre.getEtatLivre() instanceof Reparation) {
+        		
+        			System.out.println("\nLe livre '" + livre.getTitre() + "'Etat: " + livre.getEtatLivre().getNom());	
+        	}
+        		else {
+        			System.out.println("You're welcome!");
+        		}
+
     }
 
     @Override

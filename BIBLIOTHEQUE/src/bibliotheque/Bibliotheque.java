@@ -2,6 +2,7 @@ package bibliotheque;
 
 import Book.Livre;
 import Book.Roman;
+import EMPRUNT.Emprunt;
 import Observer.Adherent;
 import Observer.AdherentFactory;
 import Book.Poesie;
@@ -9,6 +10,7 @@ import Book.Bible;
 import Book.Fable;
 import Book.LivreFactory;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,15 +18,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Bibliotheque {
-    private Map<String, Adherent> adherents = new HashMap<>(); // Collection pour gérer les adhérents
+    private Map<String, Adherent> adherents = new HashMap<>(); 
     private static Bibliotheque instance = null;
     private String nom;
     private Map<String, Livre> livres;
     private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
+    //singleton
+    
     private static final Scanner scanner = new Scanner(System.in);
     EncadreMot a = new EncadreMot();
     private Bibliotheque(String nom) {
@@ -68,8 +73,7 @@ public class Bibliotheque {
     public void ajouterAdherent(Adherent adherent) {
         if (adherent != null && !adherents.containsKey(adherent.getAdherentID())) {
             adherents.put(adherent.getAdherentID(), adherent);
-            // Suppression de l'affichage direct lors de l'ajout depuis le fichier
-            // System.out.println("Adhérent " + adherent.getNom() + " " + adherent.getPrenom() + " (ID: " + adherent.getAdherentID() + ") ajouté.");
+           
         } else if (adherent != null) {
             System.out.println("Un adhérent avec l'ID " + adherent.getAdherentID() + " existe déjà.");
         }
@@ -78,9 +82,9 @@ public class Bibliotheque {
     public void supprimerLivre(String livreID) {
         if (livres.containsKey(livreID)) {
             livres.remove(livreID);
-            System.out.println("Livre supprimé avec succès : " + livreID);
+            System.out.println("Livre supprime avec succes : " + livreID);
         } else {
-            System.out.println("Livre non trouvé pour l'ID : " + livreID);
+            System.out.println("Livre non trouve pour l'ID : " + livreID);
         }
     }
 
@@ -213,25 +217,25 @@ public class Bibliotheque {
     public void ajouterLivreConsole() {
         System.out.println("\n***  Ajouter un nouveau livre  ***");
         try {
-            System.out.print("Entrez l'ID du livre");
+            System.out.print("Entrez l'ID du livre :\n");
             String livreID = scanner.nextLine();
 
-            System.out.print("Entrez le titre : ");
+            System.out.print("Entrez le titre :\n ");
             String titre = scanner.nextLine();
 
-            System.out.print("Entrez l'auteur : ");
+            System.out.print("Entrez l'auteur :\n ");
             String auteur = scanner.nextLine();
 
-            System.out.print("Entrez la date de publication (AAAA-MM-JJ) : ");
+            System.out.print("Entrez la date de publication (AAAA-MM-JJ) :\n ");
             Date datePublication = SDF.parse(scanner.nextLine());
 
-            System.out.print("Entrez la maison d'édition : ");
+            System.out.print("Entrez la maison d'édition :\n ");
             String maisonEdit = scanner.nextLine();
 
             System.out.print("Entrez la date d'ajout (AAAA-MM-JJ) : ");
             Date dateAjout = SDF.parse(scanner.nextLine());
 
-            System.out.print("Entrez la spécificité (Genre/Thème/Testament/Morale) : ");
+            System.out.print("Entrez la spécificité (Genre/Thème/Testament/Morale) :\n ");
             String spec = scanner.nextLine();
 
             String typeStr = getTypeFromLivreID(livreID);
@@ -240,7 +244,7 @@ public class Bibliotheque {
             if (nouveauLivre != null) {
                 ajouterLivre(nouveauLivre);
             } else {
-                System.out.println(" Échec de l'ajout du livre. Type d'ID non reconnu.");
+                System.out.println("\n Echec de l'ajout du livre. Type d'ID non reconnu.");
             }
         } catch (ParseException e) {
             System.out.println("\nErreur de format de date. Veuillez utiliser AAAA-MM-JJ.");
@@ -250,31 +254,31 @@ public class Bibliotheque {
     }
 
     public void modifierLivreConsole() {
-        System.out.println("\n--- Modifier un livre existant ---");
-        System.out.print("Entrez l'ID du livre à modifier : ");
+        System.out.println("\n*** Modifier un livre existant ***");
+        System.out.print("Entrez l'ID du livre à modifier :\n ");
         String idLivreAModifier = scanner.nextLine();
 
         if (livres.containsKey(idLivreAModifier)) {
-            System.out.println("Livre trouvé. Veuillez entrer les nouvelles informations.");
+            System.out.println("\nLivre trouvé. Veuillez entrer les nouvelles informations.");
             try {
                 String typeStr = getTypeFromLivreID(idLivreAModifier);
 
-                System.out.print("Entrez le nouveau titre : ");
+                System.out.print("\nEntrez le nouveau titre : \n");
                 String titre = scanner.nextLine();
 
-                System.out.print("Entrez le nouvel auteur : ");
+                System.out.print("\nEntrez le nouvel auteur :\n ");
                 String auteur = scanner.nextLine();
 
-                System.out.print("Entrez la nouvelle date de publication (AAAA-MM-JJ) : ");
+                System.out.print("\nEntrez la nouvelle date de publication (AAAA-MM-JJ) :\n ");
                 Date datePublication = SDF.parse(scanner.nextLine());
 
-                System.out.print("Entrez la nouvelle maison d'édition : ");
+                System.out.print("\nEntrez la nouvelle maison d'édition :\n ");
                 String maisonEdit = scanner.nextLine();
 
-                System.out.print("Entrez la nouvelle date d'ajout (AAAA-MM-JJ) : ");
+                System.out.print("\nEntrez la nouvelle date d'ajout (AAAA-MM-JJ) :\n ");
                 Date dateAjout = SDF.parse(scanner.nextLine());
 
-                System.out.print("Entrez la nouvelle spécificité (Genre/Thème/Testament/Morale) : ");
+                System.out.print("\nEntrez la nouvelle spécificité (Genre/Thème/Testament/Morale) :\n ");
                 String spec = scanner.nextLine();
 
                 Livre livreModifie = LivreFactory.creerLivre(typeStr, idLivreAModifier, titre, auteur, datePublication, maisonEdit, dateAjout, spec);
@@ -282,7 +286,7 @@ public class Bibliotheque {
                 if (livreModifie != null) {
                     modifierLivre(idLivreAModifier, livreModifie);
                 } else {
-                    System.out.println("Échec de la modification. Type d'ID original non reconnu.");
+                    System.out.println("\nÉchec de la modification. Type d'ID original non reconnu.");
                 }
 
             } catch (ParseException e) {
@@ -291,13 +295,13 @@ public class Bibliotheque {
                 System.out.println("\nUne erreur est survenue lors de la modification du livre : " + e.getMessage());
             }
         } else {
-            System.out.println("Le livre avec l'ID " + idLivreAModifier + " n'existe pas.");
+            System.out.println("\nLe livre avec l'ID " + idLivreAModifier + " n'existe pas.");
         }
     }
 
     public void supprimerLivreConsole() {
-        System.out.println("\n--- Supprimer un livre ---");
-        System.out.print("Entrez l'ID du livre à supprimer : ");
+        System.out.println("\n*** Supprimer un livre ***");
+        System.out.print("\nEntrez l'ID du livre à supprimer : ");
         String idLivreASupprimer = scanner.nextLine();
         supprimerLivre(idLivreASupprimer);
     }
@@ -320,12 +324,37 @@ public class Bibliotheque {
                 return "";
         }
     }
+    
+    public static void sauvegarderEmprunts(String nomFichier) {
+        try (FileWriter fw = new FileWriter(nomFichier)) {
+            for (Emprunt emprunt : emprunts) {
+                String idAdherent = emprunt.getAdherent().getAdherentID();
+                String idLivre = emprunt.getLivre().getLivreID();
+                String dateEmprunt = SDF.format(emprunt.getDateEmprunt());
+                String dateRetourPrevu = SDF.format(emprunt.getDateRetourPrevu());
+                String dateRetourReel = (emprunt.getDateRetourReel() != null)
+                                        ? SDF.format(emprunt.getDateRetourReel())
+                                        : "";
+
+                String line = String.join(";",
+                                          idAdherent,
+                                          idLivre,
+                                          dateEmprunt,
+                                          dateRetourPrevu,
+                                          dateRetourReel
+                );
+                fw.write(line + "\n");
+            }
+            System.out.println("Emprunts sauvegardés avec succès dans " + nomFichier);
+        } catch (IOException e) {
+            System.err.println("Erreur lors de la sauvegarde des emprunts : " + e.getMessage());
+        }
+    }
+
 
     public void chargerLivresDepuisFichier(String nomFichier) {
         try (BufferedReader br = new BufferedReader(new FileReader(nomFichier))) {
-            String line;
-            // Suppression de l'affichage direct du succès du chargement des livres
-            // System.out.println("Livres chargés depuis " + nomFichier + " avec succès.");
+            String line;     
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(";");
                 if (parts.length >= 7) {

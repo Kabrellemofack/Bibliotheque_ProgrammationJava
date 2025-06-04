@@ -7,26 +7,38 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Reservation {
+	
     private Adherent adherent;
     private Livre livre;
     private Date dateReservation;
-    private boolean active; // Indique si la réservation est toujours active
+    private boolean active;
 
     public Reservation(Adherent adherent, Livre livre, Date dateReservation) {
         this.adherent = adherent;
         this.livre = livre;
         this.dateReservation = dateReservation;
-        this.active = true; // La réservation est active par défaut
+        this.active = true; 
     }
 
-    // Getters
-    public Adherent getAdherent() { return adherent; }
-    public Livre getLivre() { return livre; }
-    public Date getDateReservation() { return dateReservation; }
-    public boolean isActive() { return active; }
+  
+    public Adherent getAdherent() {
+    	
+    	return adherent; 
+    	}
+    public Livre getLivre() { 
+    	return livre;
+    	}
+    public Date getDateReservation() { 
+    	return dateReservation; 
+    	}
+    public boolean isActive() { 
+    	return active; 
+    	}
 
-    // Setter pour l l'état d'activité de la réservation
-    public void setActive(boolean active) { this.active = active; }
+
+    public void setActive(boolean active) { 
+    	
+    	this.active = active; }
 
     @Override
     public String toString() {

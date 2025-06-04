@@ -1,10 +1,10 @@
 package Observer;
 
 /**
- * Interface LivreObservable: Définit les méthodes pour gérer les observateurs d'un livre.
+ *  methodes pour gérer les observateurs d'un livre.
  */
 public interface LivreObservable {
-    void addObserver(AdherentObserver observer);    // Ajoute un observateur
-    void removeObserver(AdherentObserver observer); // Supprime un observateur
-    void notifyObservers();                         // Notifie tous les observateurs
+    void addObserver(AdherentObserver observer);    
+    void removeObserver(AdherentObserver observer); 
+    void notifyObservers();                         
 }

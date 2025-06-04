@@ -1,5 +1,6 @@
 01;kabrel;lemka
 1;kabso;kabso
 03;kiklobe;kiki
+006;Rick le boy ;arthur
 989;kiko;lionnel
 6789;dedede;folklore

@@ -14,11 +14,12 @@ public class Main {
 
     private static final Scanner SCANNER = new Scanner(System.in);
     private static Bibliotheque biblio;
-    private static String utilisateurConnecte = null; // Pour stocker l'ID de l'adhérent connecté ou le nom d'utilisateur de l'admin
+    private static String utilisateurConnecte = null; 
     private static boolean estAdminConnecte = false;
 
     private static final String LIVRES = "livres.txt";
     private static final String ADHERENTS = "adherents.txt";
+    private static final String EMPRUNT= "emprunt.txt";
     private static final Map<String, String> UTILISATEURS_ENREGISTRES = new HashMap<>();
     static {
         UTILISATEURS_ENREGISTRES.put("admin", "admin");
@@ -43,7 +44,7 @@ public class Main {
     private static boolean authentifierUtilisateur() {
         final int MAX_TENTATIVES = 3;
         for (int tentative = 1; tentative <= MAX_TENTATIVES; tentative++) {
-            System.out.println("\n *** Veuillez vous Authentifier  ***");
+            System.out.println("\n \t*** Veuillez vous Authentifier  ***");
             System.out.print("\n\t*** Nom d'utilisateur :  ");
             String nomOuIdentifiant = SCANNER.nextLine();
             System.out.print("\n\t*** Mot de passe ou  ID  : ");
@@ -94,8 +95,10 @@ public class Main {
                 System.out.println("#                Adherent connecte                            #");
                 System.out.println("#-------------------------------------------------------------#");
                 System.out.println("# 1. Consulter les livres                                     #");
-                System.out.println("# 2. Emprunter un livre                                       #");
-                System.out.println("# 3. Rendre un livre                                          #");
+                
+                System.out.println("# 8. Emprunter un livre                                       #");
+                System.out.println("# 9. Rendre un livre                                          #");
+               System.out.println("# 10. Reserver un Livre                                        #");
                 System.out.println("# 0. Quitter                                                  #");
             }
 
@@ -128,15 +131,34 @@ public class Main {
                         break;
                     case 6:
                         if (estAdminConnecte) biblio.afficherAdherents();
-                        else emprunterLivreConsole(); // Adhérent tente d'emprunter
+                        else emprunterLivreConsole(); 
                         break;
-                    case 7: // Correction: L'adhérent utilise le choix 3 pour rendre un livre
+                    case 7: 
                         if (!estAdminConnecte) {
                             rendreLivreConsole();
                         } else {
                             System.out.println("Action non autorisée pour un administrateur.");
                         }
                         break;
+                    case 8:
+                    	if(!estAdminConnecte) {
+                    		emprunterLivreConsole();
+                    	}
+                    	
+                    	break;
+                    case 9:
+                    	if(!estAdminConnecte) {
+                    		rendreLivreConsole();
+                    	}
+                    	
+                    	break;
+                    case 10:
+                    	if(!estAdminConnecte) {
+                    		rendreLivreConsole();
+                    	}
+                    	
+                    	break;
+                    	
                     case 0:
                         System.out.println("Merci d'avoir utilisé la bibliothèque. Au revoir!");
                         break;
@@ -145,17 +167,18 @@ public class Main {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Entrée invalide. Veuillez entrer un nombre.");
-                SCANNER.nextLine(); // Consomme l'entrée invalide
-                choix = -1; // Pour que la boucle continue
+                SCANNER.nextLine(); 
+                choix = -1; 
             }
-        } while (choix != 0); // Correction: Quitter sur le choix 0
+        } while (choix != 0); 
         biblio.sauvegarderLivres(LIVRES);
         biblio.sauvegarderAdherents(ADHERENTS);
+        //biblio.sauvegarderAdherents(ADHERENTS);
     }
 
     private static void emprunterLivreConsole() {
-        System.out.println("\n--- Emprunter un livre ---");
-        System.out.print("Entrez l'ID du livre à emprunter : ");
+        System.out.println("\n*** Emprunter un livre ***");
+        System.out.print (" \nEntrez l'ID du livre   : ");
         String livreID = SCANNER.nextLine();
 
         if (utilisateurConnecte != null && !estAdminConnecte) {
@@ -173,10 +196,31 @@ public class Main {
             }
         }
     }
+    private static void reserverLivreConsole() {
+        System.out.println("\n*** Reservation d'un Livre  ***");
+        System.out.print("\nEntrez l'ID du livre à rendre : ");
+        String livreID = SCANNER.nextLine();
+
+        if (utilisateurConnecte != null && !estAdminConnecte) {
+            Adherent adherentConnecte = biblio.getAdherents().get(utilisateurConnecte);
+            Livre livreAReserver = biblio.getLivres().get(livreID);
+
+            if (adherentConnecte != null) {
+                if (livreAReserver != null) {
+                    adherentConnecte.reserver(livreAReserver);
+                } else {
+                    System.out.println("Livre avec l'ID '" + livreID + "' non trouvé.");
+                }
+            } else {
+                System.out.println("Adhérent connecté non trouvé.");
+            }
+        } 
+    }
+
 
     private static void rendreLivreConsole() {
         System.out.println("\n*** Rendre un livre  ***");
-        System.out.print("Entrez l'ID du livre à rendre : ");
+        System.out.print("\nEntrez l'ID du livre à rendre : ");
         String livreID = SCANNER.nextLine();
 
         if (utilisateurConnecte != null && !estAdminConnecte) {
@@ -192,9 +236,7 @@ public class Main {
             } else {
                 System.out.println("Adhérent connecté non trouvé.");
             }
-        } else {
-            System.out.println("Vous devez être connecté en tant qu'adhérent pour rendre un livre.");
-        }
+        } 
     }
 
     private static void afficherMenuGestionLivresAdmin() {
@@ -208,7 +250,7 @@ public class Main {
             System.out.println("5. Retour au menu principal");
             System.out.print("Choisissez une option : ");
             choix = SCANNER.nextInt();
-            SCANNER.nextLine(); // Consomme la nouvelle ligne
+            SCANNER.nextLine(); 
             switch (choix) {
                 case 1:
                     System.out.println("Fonctionnalité d'ajout de livre.");
@@ -227,13 +269,13 @@ public class Main {
                 default:
                     System.out.println("Option invalide.");
             }
-        } while (choix != 5); // Correction: Retour au menu principal sur le choix 5
+        } while (choix != 5);
     }
 
-    private static void afficherMenuGestionAdherentsAdmin() {
+   /* private static void afficherMenuGestionAdherentsAdmin() {
         int choix;
         do {
-            System.out.println("\n--- Gestion des Adhérents (Admin) ---");
+            System.out.println("\n*** Gestion des Adhérents ***");
             System.out.println("1. Inscrire un adhérent");
             System.out.println("2. Mettre à jour un adhérent");
             System.out.println("3. Supprimer un adhérent");
@@ -241,7 +283,7 @@ public class Main {
             System.out.println("9. Retour au menu principal");
             System.out.print("Choisissez une option : ");
             choix = SCANNER.nextInt();
-            SCANNER.nextLine(); // Consomme la nouvelle ligne
+            SCANNER.nextLine(); 
             switch (choix) {
                 case 1:
                     System.out.println("Fonctionnalité d'inscription d'un adhérent.");
@@ -261,5 +303,5 @@ public class Main {
                     System.out.println("Option invalide.");
             }
         } while (choix != 9);
-    }
+    }*/
 }

@@ -12,7 +12,6 @@ public class Emprunt {
     private Date dateRetourPrevu;
     private Date dateRetourReel;
 
-    // Constructeur principal avec tous les champs sauf retour réel
     public Emprunt(Adherent adherent, Livre livre, Date dateEmprunt, Date dateRetourPrevu) {
         this.adherent = adherent;
         this.livre = livre;
@@ -21,7 +20,7 @@ public class Emprunt {
         this.dateRetourReel = null;
     }
 
-    // Getters et Setters
+  
     public Adherent getAdherent() {
         return adherent;
     }
@@ -64,12 +63,14 @@ public class Emprunt {
 
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String retourReelStr = (dateRetourReel != null) ? sdf.format(dateRetourReel) : "Non retourné";
+        SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+        String retourReel = (dateRetourReel != null) ? date.format(dateRetourReel) : "Non retourné";
         return "Emprunt [Adhérent: " + adherent.getNom() + " " + adherent.getPrenom() +
                 ", Livre: " + livre.getTitre() + " (ID: " + livre.getLivreID() + ")" +
-                ", Emprunté le: " + sdf.format(dateEmprunt) +
-                ", Retour prévu: " + sdf.format(dateRetourPrevu) +
-                ", Retour réel: " + retourReelStr + "]";
+                ", Emprunté le: " + date.format(dateEmprunt) +
+                ", Retour prévu: " + date.format(dateRetourPrevu) +
+                ", Retour réel: " + retourReel + "]";
     }
+    
+    
 }

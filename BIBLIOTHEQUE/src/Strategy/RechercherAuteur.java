@@ -8,7 +8,6 @@ public class RechercherAuteur implements RechercheStrategy {
 	
 	@Override
 	public void rechercher(String file, String recherche) {
-		// TODO Auto-generated method stub
 		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 		    String ligne;
 		    
